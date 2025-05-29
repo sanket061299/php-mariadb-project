@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myphp
+  name: myphp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myphp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myphp
+    spec:
+      containers:
+      - image: docker.io/sankethipparge/php-mariadb:php
+        name: php-mariadb
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_HOST
+          value: "mariadb"
+        - name: DB_USER
+          value: "sanket"
+        - name: DB_PASS
+          value: "redhat"
+        - name: DB_NAME
+          value: "unnati"
+        resources: {}
+status: {}
